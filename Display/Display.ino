@@ -101,7 +101,7 @@ void loop() {
         last_check = millis();
 
         if (Firebase.getString(fbdo, STORE_PATH)) {
-            String new_name = fbdo.stringData().name;
+            String new_name = fbdo.stringData();
 
             if (new_name != Client_Name) {
                 Client_Name = new_name;
