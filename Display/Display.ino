@@ -7,7 +7,7 @@
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-#define USER_PATH "/user"
+#define STORE_PATH "/user/name"
 
 FirebaseData fbdo;
 FirebaseAuth auth;
@@ -73,6 +73,7 @@ void set_name()
    	    padding = 0;
   	}
   
+    lcd.clear();
 	lcd.setCursor(2, 0);
 	lcd.print("Pedido para:");
 	lcd.setCursor(padding, 1);
@@ -99,7 +100,7 @@ void loop() {
     if (millis() - last_check >= check_interval) {
         last_check = millis();
 
-        if (Firebase.getString(fbdo, USER_PATH)) {
+        if (Firebase.getString(fbdo, STORE_PATH)) {
             String new_name = fbdo.stringData().name;
 
             if (new_name != Client_Name) {
