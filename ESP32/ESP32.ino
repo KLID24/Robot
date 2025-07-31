@@ -34,7 +34,8 @@ void setup_wifi()
 {
 	WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
 	
-	while (WiFi.status() != WL_CONNECTED) {
+	while (WiFi.status() != WL_CONNECTED) 
+    {
 		Serial.println("Connecting wifi");
 		Serial.print(".");
 		delay(500);
@@ -51,11 +52,13 @@ void setup_firebase()
 	firebase.begin(&config, &auth);
 	firebase.reconnectWiFi(true);
 
-	if (firebase.signUp(&config, &auth, "", "")) {
+	if (firebase.signUp(&config, &auth, "", "")) 
+    {
     	Serial.println("sing-up: OK");
     	lcd_print_new("Sign-up is done!");
  	} 
-    else {
+	else 
+    {
 		Serial.println("sign-up: FAIL");
 	} 
 
